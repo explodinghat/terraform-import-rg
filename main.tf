@@ -13,6 +13,11 @@ provider "azurerm" {
   features {}
 }
 
+/* We use 'data' to leverage existing resources whose lifecycle we don't want to incorporate into terraform, as below.
+If we want to leverage existing resources and bring those into the terraform lifecycle, we would instead add the resource
+to the file as a 'resource' block, then run 'terraform import [resource ID] from the commandline to bring the resource 
+into the state file. Terraform destroy will subsequently destroy this resource(s). */
+  
 data "azurerm_resource_group" "rg" {
   name = "[paste-existing-rg-here]"
 }
