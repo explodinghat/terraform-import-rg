@@ -8,6 +8,7 @@ terraform {
 }
 
 provider "azurerm" {
+  # if we're working in an environment with limited permissions (like acloudguru), we add below line to prevent errors
   skip_provider_registration = true
   features {}
 }
